@@ -1,4 +1,4 @@
-# FailFirst GitHub Action
+# FailFirst Gate (GitHub Action)
 
 Proves that a pull request's tests actually test the change. On every PR it runs the
 [`fail-first-gate`](https://www.npmjs.com/package/fail-first-gate) CLI, which checks three things:
