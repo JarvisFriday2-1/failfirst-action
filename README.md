@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0   # the base commit must be present
-      - uses: JarvisFriday2-1/failfirst-action@v0.1.1
+      - uses: JarvisFriday2-1/failfirst-action@v0.1.2
 ```
 
 The verdict is printed to the job log and to the job summary. A failed check or a scan hit fails the job.
