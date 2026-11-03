@@ -17,6 +17,9 @@ inputs:
   node-version:
     description: Node.js version to set up (fail-first-gate needs 22 or newer).
     default: "22"
+  path:
+    description: Directory of the repository to check, relative to the workspace.
+    default: "."
 runs:
   using: composite
   steps:
@@ -28,5 +31,5 @@ runs:
       shell: bash
       working-directory: ${{ github.action_path }}
       env:
-        FAILFIRST_REPO: ${{ github.workspace }}
+        FAILFIRST_REPO: ${{ github.workspace }}/${{ inputs.path }}
       run: bash run.sh --base "${{ inputs.base }}" --test-command "${{ inputs.test-command }}" --version "${{ inputs.version }}"

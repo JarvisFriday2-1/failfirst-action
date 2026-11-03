@@ -1,0 +1,35 @@
+name: self-test
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  honest-fix-passes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build fixture with an honest fix
+        run: bash .github/fixture.sh honest fixture
+      - name: FailFirst must pass
+        uses: ./
+        with:
+          path: fixture
+          base: main
+  hollow-fix-fails:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build fixture with a hollow fix
+        run: bash .github/fixture.sh hollow fixture
+      - name: FailFirst must fail
+        id: failfirst
+        uses: ./
+        continue-on-error: true
+        with:
+          path: fixture
+          base: main
+      - name: Assert the verdict was FAIL
+        run: |
+          echo "outcome: ${{ steps.failfirst.outcome }}"
+          test "${{ steps.failfirst.outcome }}" = "failure"
