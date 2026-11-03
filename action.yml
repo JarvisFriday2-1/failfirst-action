@@ -1,5 +1,5 @@
 name: FailFirst Gate
-description: Prove a pull request's tests fail on base, pass on head, and fail again with the fix reverted; scan the diff for weakened tests.
+description: Prove a PR's tests fail on base, pass on head, and fail with the fix reverted. Flags skipped tests and weakened asserts.
 author: John Vavalo
 branding:
   icon: shield
