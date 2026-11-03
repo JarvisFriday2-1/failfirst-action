@@ -28,6 +28,8 @@ jobs:
 
 The verdict is printed to the job log and to the job summary. A failed check or a scan hit fails the job.
 
+This repo's own [self-test](.github/workflows/self-test.yml) runs the Action on two fixtures on every push: an honest fix must pass and a hollow one must fail.
+
 ## Inputs
 
 | Input | Default | Meaning |
@@ -36,6 +38,7 @@ The verdict is printed to the job log and to the job summary. A failed check or 
 | `test-command` | from `failfirst.config.json`, else `npm test` | Command that runs the test suite. |
 | `version` | `0.1.1` | Version of `fail-first-gate` to run. |
 | `node-version` | `22` | Node.js version to set up. |
+| `path` | `.` | Directory of the repository to check, relative to the workspace. |
 
 ## Running it locally
 
