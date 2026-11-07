@@ -28,6 +28,11 @@ jobs:
 
 The verdict is printed to the job log and to the job summary. A failed check or a scan hit fails the job.
 
+**Your first PR will be red.** The PR that adds this workflow edits CI, and the scan flags every
+CI edit as `ci-tamper` so a human looks at it rather than trusting a green check. Review the workflow
+file yourself and merge over the red check. The same hit appears on any later PR that touches
+`.github/workflows/`; that is the point.
+
 This repo's own [self-test](.github/workflows/self-test.yml) runs the Action on two fixtures on every push: an honest fix must pass and a hollow one must fail.
 
 ## Inputs
